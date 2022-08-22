@@ -12,6 +12,9 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+//
+import { PaymentDetailsComponent } from './payment-details/payment-details.component';
+import { PaymentDetailFormComponent } from './payment-details/payment-detail-form/payment-detail-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    PaymentDetailsComponent,
+    PaymentDetailFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,6 +35,8 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      // { path: 'payment-details', component: PaymentDetailsComponent, canActivate: [AuthorizeGuard] },
+      // { path: 'payment-detail-form', component: PaymentDetailFormComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [
