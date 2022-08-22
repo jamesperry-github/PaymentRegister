@@ -13,5 +13,6 @@ namespace PaymentRegister.Data
         {
 
         }
+        public DbSet<PaymentRegister.Models.PaymentDetail>? PaymentDetail { get; set; }
     }
 }
