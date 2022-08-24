@@ -24,6 +24,15 @@ builder.Services.AddAuthentication()
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+// enable CORS
+builder.Services.AddCors((p) => p.AddPolicy("corspolicy", (build) =>
+{
+    // https://localhost:44422
+    build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
+// enable w/ single domain
+// enable w/ multiple domains
+// enable w/ any domain
 
 var app = builder.Build();
 
@@ -45,6 +54,8 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseIdentityServer();
 app.UseAuthorization();
+// use CORS
+app.UseCors("corspolicy");
 
 app.MapControllerRoute(
     name: "default",

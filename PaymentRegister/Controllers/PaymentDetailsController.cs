@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,6 @@ namespace PaymentRegister.Controllers
         {
             _context = context;
         }
-
         // GET: api/PaymentDetails
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PaymentDetail>>> GetPaymentDetail()
@@ -90,6 +90,10 @@ namespace PaymentRegister.Controllers
           {
               return Problem("Entity set 'ApplicationDbContext.PaymentDetail'  is null.");
           }
+            if(CardNumberExists(paymentDetail.CardNumber))
+            {
+                return Problem("Payment Detail already exists.");
+            }
             _context.PaymentDetail.Add(paymentDetail);
             await _context.SaveChangesAsync();
 
@@ -119,6 +123,10 @@ namespace PaymentRegister.Controllers
         private bool PaymentDetailExists(int id)
         {
             return (_context.PaymentDetail?.Any(e => e.PaymentDetailId == id)).GetValueOrDefault();
+        }
+        private bool CardNumberExists(string cardNumber)
+        {
+            return (_context.PaymentDetail?.Any(e => e.CardNumber == cardNumber)).GetValueOrDefault();
         }
     }
 }

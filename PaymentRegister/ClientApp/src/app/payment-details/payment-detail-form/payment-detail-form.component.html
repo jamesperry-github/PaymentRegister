@@ -1,11 +1,10 @@
-<form novalidate #form="ngForm">
-  <input type="hidden" name="paymentDetailId" [value]="service.formData.paymebtDetailId" />
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="paymentDetailId" [value]="service.formData.paymentDetailId" />
   <div class="form-group">
     <label>Card Owner Name</label>
     <input type="text" class="form-control form-control-lg" placeholder="Full Name" name="cardOwnerName"
       #cardOwnerName="ngModel" [(ngModel)]="service.formData.cardOwnerName" required
-      [class.invalid]="cardOwnerName.invalid && cardOwnerName.dirty" 
-      />
+      [class.invalid]="cardOwnerName.invalid && cardOwnerName.dirty" />
   </div>
   <div class="form-group">
     <label>Card Number</label>
@@ -24,7 +23,9 @@
         #securityCode="ngModel" [(ngModel)]="service.formData.securityCode" required maxlength="3" minlength="3" />
     </div>
   </div>
+  <br>
   <div class="form-group">
     <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit</button>
   </div>
 </form>
+<!-- <p>Error</p> -->
