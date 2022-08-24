@@ -25,7 +25,7 @@ export class PaymentDetailFormComponent implements OnInit {
 
   handleError(error: ERROR) {
     let { detail } = error.error;
-    console.log("ERROR", detail);
+    console.log("ERROR DETAIL", detail);
   }
 
   resetForm(form: NgForm) {
