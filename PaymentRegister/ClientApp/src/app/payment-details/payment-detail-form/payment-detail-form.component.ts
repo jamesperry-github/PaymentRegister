@@ -31,6 +31,7 @@ export class PaymentDetailFormComponent implements OnInit {
   resetForm(form: NgForm) {
     form.form.reset();
     this.service.formData = new PaymentDetail();
+    this.service.refreshList();
   }
 
 }

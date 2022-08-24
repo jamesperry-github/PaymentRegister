@@ -24,7 +24,8 @@ import { PaymentDetailTableComponent } from './payment-details/payment-detail-ta
     FetchDataComponent,
     PaymentDetailsComponent,
     PaymentDetailFormComponent,
-    PaymentDetailTableComponent
+    PaymentDetailTableComponent,
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,7 +34,7 @@ import { PaymentDetailTableComponent } from './payment-details/payment-detail-ta
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      // { path: 'counter', component: CounterComponent },
+      // { path: 'counter', component: CounterComponent, canActivate: [AuthorizeGuard] },
       // { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       // { path: 'payment-details', component: PaymentDetailsComponent, canActivate: [AuthorizeGuard] },
       // { path: 'payment-detail-form', component: PaymentDetailFormComponent, canActivate: [AuthorizeGuard] },
