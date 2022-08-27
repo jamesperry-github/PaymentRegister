@@ -15,7 +15,11 @@ export class PaymentDetailTableComponent implements OnInit {
     this.service.refreshList();
   }
 
-  // refreshData(selectedRecord: PaymentDetail) {
-  //   this.service.formData = Object.assign({}, selectedRecord);
-  // }
+  handleDelete(payment: PaymentDetail) {
+    try {
+      //this.service.postPaymentDetail().subscribe(() => this.resetForm(form), this.handleError);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
