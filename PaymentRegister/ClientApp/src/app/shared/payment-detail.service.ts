@@ -24,4 +24,8 @@ export class PaymentDetailService {
       this.list = data as PaymentDetail[]
     })
   }
+
+  handleDelete(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
 }

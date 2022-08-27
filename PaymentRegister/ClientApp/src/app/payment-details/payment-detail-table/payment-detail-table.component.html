@@ -14,7 +14,7 @@
       <td>{{pd.cardNumber}}</td>
       <td>{{pd.expirationDate}}</td>
       <td>{{pd.securityCode}}</td>
-      <td><i class="fa fa-trash"></i></td>
+      <td><i class="fa fa-trash" (click)="handleDelete(pd.paymentDetailId)"></i></td>
     </tr>
     <!-- <tr>
       <th scope="row">1</th>
